@@ -60,9 +60,19 @@ const snacks = [
   }
 ];
 
+// Utility Function
+let renderToDom = (divId, htmlToRender) => {
+  const selectedElement = document.querySelector(divId);
+  selectedElement.innerHTML = htmlToRender;
+}
+
+//Set domString to empty string
 let domString = "";
+
+//target the app div
 let app = document.querySelector("#app");
 
+// Render all snacls
 for (let snack of snacks) {
   domString += `
         <div class="card" style="width: 18rem;">
@@ -70,8 +80,11 @@ for (let snack of snacks) {
         <div class="card-body">
         <h5 class="card-title">${snack.name}</h5>
         <p class="card-text">${snack.description}</p>
+        <button type="button" class="btn btn-danger">Delete</button>
     </div>
   </div>
   `;
+  renderToDom("#app" , domString);
 }
-app.innerHTML = domString;
+
+// Add button
